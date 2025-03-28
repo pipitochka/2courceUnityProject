@@ -29,18 +29,19 @@ namespace _Source.Scripts
 
             CreateSlotsPrefab();
             
-            AdditionalSlots[0, 0].SetItem(new ItemInSlot(ItemsManager.Instance.Items[0], 4));
-            AdditionalSlots[0, 1].SetItem(new ItemInSlot(ItemsManager.Instance.Items[3], 2));
-            AdditionalSlots[0, 2].SetItem(new ItemInSlot(ItemsManager.Instance.Items[5], 3));
+            MainSlots[0, 0].SetItem(new ItemInSlot(ItemsManager.Instance.Items[0], 4));
+            MainSlots[0, 1].SetItem(new ItemInSlot(ItemsManager.Instance.Items[3], 2));
+            MainSlots[0, 2].SetItem(new ItemInSlot(ItemsManager.Instance.Items[5], 3));
 
         }
 
         private void CreateSlotsPrefab()
         {
-            for (int i = 0; i < MainSlots.GetLength(0); i++)
+            for (int i = 0; i < MainSlots.GetLength(1); i++)
             {
                 var slot = Instantiate(slotPrefab, mainSlotsGrid, false);
                 MainSlots[0, i] = slot.AddComponent<Slot>();
+                MainSlots[0, i].RefreshUI();
             }
 
             for (int i = 0; i < AdditionalSlots.GetLength(0); i++)
@@ -49,6 +50,7 @@ namespace _Source.Scripts
                 {
                     var slot = Instantiate(slotPrefab, additionalSLotsGrid, false);
                     AdditionalSlots[i, j] = slot.AddComponent<Slot>();
+                    AdditionalSlots[i, j].RefreshUI();
                 }
             }
         }

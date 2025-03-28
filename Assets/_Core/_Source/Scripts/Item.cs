@@ -1,6 +1,3 @@
-
-
-using DefaultNamespace;
 using UnityEngine;
 
 namespace _Source.Scripts

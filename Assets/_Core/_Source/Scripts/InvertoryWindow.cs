@@ -24,7 +24,6 @@ namespace _Source.Scripts
             {
                 Instance = this;
             }
-            Open();
         }
 
         public void Open()

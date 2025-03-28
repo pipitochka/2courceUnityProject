@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,11 +13,11 @@ namespace _Source.Scripts
         private Image ItemImage;
         private Text ItemAmount;
         
-        private Color defaultColor = new Color32(140, 140, 140, 255);
-        private Color hilightedColor = new Color32(121, 121, 121, 255);
-
+        private Color defaultColor = new Color32(255, 255, 255, 255);
+        private Color hilightedColor =  new Color32(140, 140, 140, 255);
+       
         
-        public ItemInSlot Item;
+        public ItemInSlot Item { get; private set; }
         
         public bool HasItem => Item != null;
 
@@ -41,13 +42,13 @@ namespace _Source.Scripts
             RefreshUI();
         }
         
-        private void RefreshUI()
+        public void RefreshUI()
         {
             ItemImage.gameObject.SetActive(HasItem);
             ItemImage.sprite = Item?.Item.Sprite;
             
-            ItemAmount.gameObject.SetActive(HasItem && Item.Amount > 1);
-            ItemAmount.text = Item?.Amount.ToString();
+            ItemAmount.gameObject.SetActive(HasItem && Item.Amount >= 1);
+            ItemAmount.text = Item!=null ? Item.Amount.ToString() : String.Empty;
         }
         
         public void OnPointerClick(PointerEventData eventData)
@@ -126,7 +127,9 @@ namespace _Source.Scripts
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            Debug.Log("OnPointerExit сработал!");
             Image.color = defaultColor;
+            RefreshUI();
         }
     }
 }
