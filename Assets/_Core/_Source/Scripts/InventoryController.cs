@@ -16,9 +16,15 @@ namespace _Source.Scripts
         [SerializeField]
         private Transform additionalSLotsGrid;
         
+        bool isInited = false;
+        
         public void Init()
         {
-            InitTestInventory();
+            if (!isInited)
+            {
+                InitTestInventory();
+                isInited = true;
+            }
         }
 
         private void InitTestInventory()

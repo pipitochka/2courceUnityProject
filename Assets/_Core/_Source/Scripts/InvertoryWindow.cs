@@ -34,6 +34,11 @@ namespace _Source.Scripts
             InventoryController.Init();
         }
 
+        public void Close()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void SetCurrentItem(ItemInSlot item)
         {
             CurrentItem = item;
