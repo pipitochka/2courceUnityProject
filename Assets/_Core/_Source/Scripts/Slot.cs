@@ -47,8 +47,8 @@ namespace _Source.Scripts
             ItemImage.gameObject.SetActive(HasItem);
             ItemImage.sprite = Item?.Item.Sprite;
             
-            ItemAmount.gameObject.SetActive(HasItem && Item.Amount >= 1);
-            ItemAmount.text = Item!=null ? Item.Amount.ToString() : String.Empty;
+            ItemAmount.gameObject.SetActive(HasItem && Item.Amount > 1);
+            ItemAmount.text = Item != null ? Item.Amount.ToString() : String.Empty;
         }
         
         public void OnPointerClick(PointerEventData eventData)
@@ -113,7 +113,7 @@ namespace _Source.Scripts
                 return;
             }
 
-            if (!HasItem && InvertoryWindow.Instance.CurrentItem.Item == Item.Item)
+            if (!HasItem || InvertoryWindow.Instance.CurrentItem.Item == Item.Item)
             {
                 AddItem(InvertoryWindow.Instance.CurrentItem, 1);
                 InvertoryWindow.Instance.CheckCurrentItem();

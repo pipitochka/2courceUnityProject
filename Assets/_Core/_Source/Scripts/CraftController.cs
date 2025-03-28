@@ -37,12 +37,12 @@ namespace _Source.Scripts
                 for (int j = 0; j < craftSlots.GetLength(1); j++)
                 {
                     var slot = Instantiate(slotPrefab, craftGrid, false);
-                    craftSlots[i, j] = slot.GetComponent<CraftSlot>();
+                    craftSlots[i, j] = slot.AddComponent<CraftSlot>();
                     craftSlots[i, j].RefreshUI();
                 }
             }
-            var craftslot = Instantiate(slotPrefab, craftTransform, false);
-            craftResultSlot = craftslot.GetComponent<CraftResultSlot>();
+            var resslot = Instantiate(slotPrefab, craftTransform, false);
+            craftResultSlot = resslot.AddComponent<CraftResultSlot>();
             craftResultSlot.RefreshUI();
         }
 
@@ -127,7 +127,7 @@ namespace _Source.Scripts
             {
                 for (int y = 0; y < craftSlots.GetLength(1); y++)
                 {
-                    if (craftSlots[x, y] != null)
+                    if (craftSlots[x, y].Item != null)
                     {
                         craftSlots[x, y].DecreaseItemAmount(1);
                     }
@@ -135,5 +135,6 @@ namespace _Source.Scripts
             }
             CheckCraft();
         }
+        
     }
 }
