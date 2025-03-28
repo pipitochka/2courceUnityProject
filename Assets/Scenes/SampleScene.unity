@@ -706,6 +706,8 @@ MonoBehaviour:
   slotPrefab: {fileID: 3293963210508725677, guid: 2f1571dd3321f4839aa0d03fa12c1fc1, type: 3}
   mainSlotsGrid: {fileID: 1728235344}
   additionalSLotsGrid: {fileID: 428814088}
+  lenMainSlots: 5
+  lenAdditionalSlots: 7
 --- !u!224 &730108379
 RectTransform:
   m_ObjectHideFlags: 0

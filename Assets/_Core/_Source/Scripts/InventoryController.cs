@@ -15,6 +15,11 @@ namespace _Source.Scripts
         private Transform mainSlotsGrid;
         [SerializeField]
         private Transform additionalSLotsGrid;
+        [SerializeField]
+        int lenMainSlots;
+        [SerializeField]
+        int lenAdditionalSlots;
+        
         
         bool isInited = false;
         
@@ -29,9 +34,9 @@ namespace _Source.Scripts
 
         private void InitTestInventory()
         {
-            MainSlots = new Slot[1, 9];
+            MainSlots = new Slot[1, lenMainSlots];
 
-            AdditionalSlots = new Slot[3, 9];
+            AdditionalSlots = new Slot[3, lenAdditionalSlots];
 
             CreateSlotsPrefab();
             
